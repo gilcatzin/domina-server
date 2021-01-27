@@ -12,6 +12,7 @@ class CORSMiddleware
      *
      * @return mixed
      */
+    
     public function handle($request, Closure $next)
     {
         // TODO: Should check whether route has been registered
