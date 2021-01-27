@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Concepto;
+use App\CatConcepto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

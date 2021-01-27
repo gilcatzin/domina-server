@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\CatBanco;
+use App\CatPermiso;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -47,9 +48,17 @@ class BancosController extends Controller
     }
 
     public function guardar(Request $request) {
+        $usuarioID = $request->get("id_catusuarios_c");
         
             CatBanco::create($request->all());
             $ultimo=DB::getPdo()->lastInsertId();
+
+            $permiso = new CatPermiso;
+            $permiso->id_catbancos = $ultimo;
+            $permiso->id_catusuarios = $usuarioID;
+            $permiso->save();
+
+            //CatPermiso::create(0,$ultimo,$usuarioID);
 
             return $this->crearRespuesta('El elemento ha sido creado', 201);
         
